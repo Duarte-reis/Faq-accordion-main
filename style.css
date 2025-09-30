@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --White: hsl(0, 100%, 100%);
+    --Purple100: hsl(275, 100%, 97%);
+    --Purple600: hsl(292, 16%, 49%);
+    --Purple950: hsl(292, 42%, 14%);
+}
+
+/* Elements */
+
+button {
+    border: none;
+    background-color: unset;
+}
+/* Typography */
+
+h1 h2 {
+    color: var(--Purple950)
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: var(--Purple600)
+}
+
+.question-container p {
+    color: var(--Purple950);
+    font-weight: 700;
+}
+
+/* Layout */
+
+body {
+    background: url("assets/images/background-pattern-desktop.svg") no-repeat;
+    background-color: var(--Purple100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Work Sans", sans-serif;
+}
+
+.container {
+    background-color: var(--White);
+    width: 600px;
+    max-width: 100%;
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+.page-title {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.faq:not(:last-child) {
+    border-bottom: 2px solid var(--Purple100);
+    padding-bottom: 1rem;
+}
+
+.question-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+}
+
+.open-btn {
+    position: absolute;
+    opacity: 1;
+}
+
+.close-btn {
+    opacity: 0;
+}
+
+.answer-container {
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 1rem;
+    transition: max-height 1s ease-in-out;
+}
+
+/* Active states */
+
+.faq.active .answer-container {
+    max-height: 300px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.faq:not(.active) .answer-container {
+    animation: fadeOut .5s ease-in-out;
+    transition: max-height .5s ease-in-out;
+}
+
+.faq.active .open-btn {
+    opacity: 0;
+}
+
+.faq.active .close-btn {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
